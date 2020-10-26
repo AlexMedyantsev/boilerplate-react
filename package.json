@@ -1,5 +1,5 @@
 {
-  "homepage": "https://alexmedyantsev.github.io/boilerplate-react/",
+  "homepage": "https://AlexMedyantsev.github.io/boilerplate-react/",
   "scripts": {
     "eslint": "eslint --ext .jsx --ext .js src/",
     "test": "npm run eslint",
