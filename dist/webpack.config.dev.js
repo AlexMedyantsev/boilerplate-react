@@ -16,7 +16,6 @@ module.exports = {
     path: path.join(__dirname, "public")
   },
   devServer: {
-    watch: false,
     contentBase: path.join(__dirname, "public"),
     open: false,
     port: 1337,
