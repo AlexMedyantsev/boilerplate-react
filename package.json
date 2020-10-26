@@ -1,5 +1,4 @@
 {
-  "homepage": ".",
   "scripts": {
     "eslint": "eslint --ext .jsx --ext .js src/",
     "test": "npm run eslint",

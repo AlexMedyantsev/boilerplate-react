@@ -50,7 +50,7 @@ class App extends PureComponent {
 
   render() {
     return (
-      <Router history={history} basename={process.env.PUBLIC_URL}>
+      <Router history={history}>
         <Switch>
           <Route exact path="/">
             {this.renderMain()}

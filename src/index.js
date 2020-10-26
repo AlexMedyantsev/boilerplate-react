@@ -26,7 +26,7 @@ store.subscribe(throttle(()=>{
 
 const init = () => {
   ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={store} basename={process.env.PUBLIC_URL}>
       <App />
     </Provider>,
     document.querySelector(`#root`)
