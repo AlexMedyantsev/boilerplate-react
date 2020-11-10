@@ -15,6 +15,7 @@ export const ActionType = {
   SET_ACTIVE_MONTH_NUMBER: `SET_ACTIVE_MONTH_NUMBER`,
   SET_ACTIVE_YEAR: `SET_ACTIVE_YEAR`,
   SET_ACTIVE_SEASON: `SET_ACTIVE_SEASON`,
+  RESET_ACTIVE_SEASON: `RESET_ACTIVE_SEASON`,
   SET_ACTIVE_SEASON_TAB: `SET_ACTIVE_SEASON_TAB`,
 }
 
@@ -29,6 +30,9 @@ export const ActionCreator = {
   setActiveSeason: (month) => ({
     type: ActionType.SET_ACTIVE_SEASON,
     payload: month,
+  }),
+  resetActiveSeason: () => ({
+    type: ActionType.RESET_ACTIVE_SEASON,
   }),
   setActiveYear: (month) => ({
     type: ActionType.SET_ACTIVE_YEAR,
@@ -56,7 +60,7 @@ export const reducer = (state = initialState, action) => {
       });
     case ActionType.SET_ACTIVE_SEASON_TAB:
       return Object.assign({}, state, {
-        activeYear: action.payload,
+        activeSeasonTab: action.payload,
       });
     case ActionType.SET_ACTIVE_SEASON:
       return Object.assign({}, state, {
@@ -64,6 +68,17 @@ export const reducer = (state = initialState, action) => {
           if (season.id === action.payload.id) {
             return Object.assign({}, season, {
               isActive: true,
+            })
+          }
+          return season;
+        }),
+      });
+    case ActionType.RESET_ACTIVE_SEASON:
+      return Object.assign({}, state, {
+        seasons: state.seasons.map((season) => {
+          if (season.isActive) {
+            return Object.assign({}, season, {
+              isActive: false,
             })
           }
           return season;

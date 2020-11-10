@@ -14,7 +14,7 @@ import {getDustCount} from "../../reducer/money/selectors.js";
 import moment from "moment";
 
 import {filterCardsByRarity, filterCardsByMonthDate, getCollectedCardsCountByRarity} from "../../utils/common.js";
-import {SortByMonthBar} from "../month-bar/month-bar.jsx";
+import SortByMonthBar from "../month-bar/month-bar.jsx";
 
 const activeSeasonNumber = 0;
 
@@ -27,22 +27,20 @@ class Main extends PureComponent {
 
   componentDidMount() {
     const {setActiveSeasonTab, seasons} = this.props;
-    setActiveSeasonTab(seasons[0]);
+    setActiveSeasonTab(seasons[1]);
   }
 
   render() {
     const {cards, activeCard, activeMonthNumber, activeYear, setActiveSeason, seasons, resetActiveCard, setGoldenCard, removeGoldenCard, removeCollectedCard, dustCount, changeDustCount} = this.props;
     const filteredCardsByMonth = filterCardsByMonthDate(cards, moment().month(), moment().year());
+    console.log(filteredCardsByMonth)
 
     return <React.Fragment>
       <div className="wrapper wrapper--column">
         <Header
           dustCount={dustCount}
         />
-        <SortByMonthBar
-          seasons={seasons}
-          setActiveSeason={setActiveSeason}
-        />
+        <SortByMonthBar/>
         <CardsList
           allCardsByRarityCount={filterCardsByRarity(filteredCardsByMonth, "blue").length}
           collectedCardsByRarityCount={getCollectedCardsCountByRarity(filteredCardsByMonth, "blue")}

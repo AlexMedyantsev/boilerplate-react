@@ -33,15 +33,17 @@ class Rewards extends PureComponent {
   generateCards(cards, pack) {
     let gettedCards = [];
     let numbers = [];
-    let willCardBeGold = Math.floor((Math.random() * 100));
 
     const checkIfCardWillBeGold = (pack) => {
+      // Записываем в константу значение от  0 до 100
       let willCardBeGold = Math.floor((Math.random() * 100));
 
+      // Проверяем и делаем карту золотой если пак - золотой
       if (pack.name === 'gold') {
         return true;
       }
 
+      // Если пак не золотой, то делаем ролл, где с 15% вероятностью делаем карту золотой
       if (willCardBeGold > 85) {
         return true;
       } else {
@@ -53,17 +55,20 @@ class Rewards extends PureComponent {
       let n = 0
       while (n < amount) {
         const x = Math.floor(Math.random() * cards.filter((card) => card.monthNumber === pack.monthNumber && card.year === pack.year).length);
+        // Проверяем - если карта есть и она золотая, то число n не увеличивается и цикл идет на еще один круг
         if (cards[x].isCollected && cards[x].isGoldBorder) {
           n = 0
-        } else if (!cards[x].isGoldBorder && checkIfCardWillBeGold(pack)) {
+          // Проверяем есть ли карта, не золотая ли она и будет ли золотой?
+        } else if (cards[x].isCollected && !cards[x].isGoldBorder && checkIfCardWillBeGold(pack)) {
           numbers.push(x);
           n++;
+          // 
         } else if (!cards[x].isCollected) {
           numbers.push(x);
           n++;
         }
-      }
-    };
+      };
+    }
 
     generateNumbers(CARDS_IN_PACK);
     console.log(numbers);

@@ -222,6 +222,10 @@ code {
   background-image: url("../img/planning.svg");
   background-size: 35px 35px;
 }
+.menu__item--shop {
+  background-image: url("../img/shop.svg");
+  background-size: 35px 35px;
+}
 
 .collectibles {
   box-sizing: border-box;
@@ -796,4 +800,69 @@ code {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
+}
+
+.shop-list {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 30px;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.dime {
+  width: 670px;
+  height: 374px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.shop-item {
+  width: 700px;
+  height: 400px;
+  border-radius: 15px;
+  background-image: url("../img/hs-wood.jpg");
+  background-size: 700px 400px;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-item-image {
+  width: 200px;
+  height: 280px;
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.shop-item-info {
+  width: 400px;
+  height: 100%;
+  border: 1px solid red;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding-left: 20px;
+}
+
+.shop-item-container {
+  display: flex;
+  outline: 1px solid red;
+  align-items: center;
+  justify-content: center;
+  width: 600px;
+  height: 280px;
+}
+
+.shop-item-name {
+  font-size: 34px;
+  font-weight: bold;
+  color: #f6d140;
+  line-height: 38px;
 }

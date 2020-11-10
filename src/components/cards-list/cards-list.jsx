@@ -3,6 +3,7 @@ import {ActionCreator as ActionCreatorCondition} from "../../reducer/condition/c
 import {getActiveCard} from "../../reducer/condition/selectors.js";
 import {connect} from "react-redux";
 import {Card} from "../card/card.jsx";
+import moment from "moment";
 
 
 class CardsList extends PureComponent {
@@ -12,6 +13,8 @@ class CardsList extends PureComponent {
 
   render() {
     const {cards, allCardsByRarityCount, collectedCardsByRarityCount, setActiveCard} = this.props;
+    //const cardsFilteredByMonth = cards.filter(card => card.monthNumber === moment().month() && card.year === moment().year());
+
     return (
       <ul className="collectibles">
         <span className="card-count">{collectedCardsByRarityCount}/{allCardsByRarityCount}</span>

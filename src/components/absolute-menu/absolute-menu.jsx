@@ -21,6 +21,10 @@ class AbsoluteMenu extends React.PureComponent {
           <div class="menu__item menu__item--tasks"></div>
           <div class="menu__item-text">Путь</div>
         </Link>
+        <Link to="/shop" className="menu__item-container">
+          <div class="menu__item menu__item--shop"></div>
+          <div class="menu__item-text">Магазин</div>
+        </Link>
       </ul>
     )
   }

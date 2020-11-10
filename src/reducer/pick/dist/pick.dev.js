@@ -155,7 +155,7 @@ var reducer = function reducer() {
         packs: state.packs.map(function (pack) {
           if (pack.id === action.payload.id) {
             return Object.assign({}, pack, {
-              amount: amount + 1
+              amount: pack.amount - 1
             });
           }
         })

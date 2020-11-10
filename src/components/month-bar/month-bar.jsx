@@ -1,8 +1,11 @@
 import React, {PureComponent} from 'react';
 let moment = require("moment");
 if ("default" in moment) {
-    moment = moment["default"];
+  moment = moment["default"];
 }
+import {connect} from "react-redux";
+import {getSeasons} from "../../reducer/condition/selectors.js";
+import {ActionCreator as ActionCreatorCondition} from "../../reducer/condition/condition.js";
 
 console.log(moment().month());
 console.log(moment().year());
@@ -15,11 +18,10 @@ class SortByMonthBar extends PureComponent {
   }
 
   monthClickHandler(season) {
-    const {setActiveSeason} = this.props;
+    const {setActiveSeason, resetActiveSeason} = this.props;
 
-    if (moment().month().isSameOrAfter(season.monthNumber) && moment().year().isAfter(season.year)) {
-      setActiveSeason(season);
-    }  
+    resetActiveSeason();
+    setActiveSeason(season);
   }
 
   render() {
@@ -30,17 +32,29 @@ class SortByMonthBar extends PureComponent {
         <ul className="month-list">
           {seasons.map((season) => {
             console.log("check if month is is in future " + season.year > moment().year() && season.momth > moment().month())
-            return <li 
+            return <li
               onClick={() => {this.monthClickHandler(season)}}
               className={season.isActive ? "month-item month-item__current" : "month-item"}
               style={season.year > moment().year() || season.monthNumber > moment().month() ? {display: 'none'} : {display: 'block'}}
-              >
+            >
               {season.monthName}
-            </li>})}
+            </li>
+          })}
         </ul>
       </div>
     )
   }
 }
 
-export {SortByMonthBar};
+const mapStateToProps = (state) => {
+  return {
+    seasons: getSeasons(state),
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  setActiveSeason: season => dispatch(ActionCreatorCondition.setActiveSeason(season)),
+  resetActiveSeason: season => dispatch(ActionCreatorCondition.resetActiveSeason(season)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SortByMonthBar);

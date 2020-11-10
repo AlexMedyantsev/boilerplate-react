@@ -192,7 +192,7 @@ export const tasks = [
 
 export const packs = [
   {
-    name: ``,
+    name: `October 2020 cards pack`,
     monthNumber: 9,
     year: 2020,
     image: "../img/card-back-playing-koi.png",
@@ -200,8 +200,8 @@ export const packs = [
   },
   {
     name: `gold`,
-    monthNumber: null,
-    year: null,
+    monthNumber: moment().month(),
+    year: moment().year(),
     image: "../img/card-back-golden.png",
     amount: 2,
   }

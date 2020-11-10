@@ -4,7 +4,8 @@ import history from "../../history.js";
 import {Switch, Route, Router} from "react-router-dom";
 import Main from "../main/main.jsx";
 import Rewards from "../pack/pack.jsx";
-import {Tasks} from "../tasks/tasks.jsx"
+import {Tasks} from "../tasks/tasks.jsx";
+import Shop from "../shop/shop.jsx";
 import {getCards, getPacks} from '../../reducer/pick/selectors.js';
 import {getSeasons, getActiveSeason} from '../../reducer/condition/selectors.js';
 import {getDustCount, getTasks} from '../../reducer/money/selectors.js';
@@ -15,7 +16,7 @@ class App extends PureComponent {
 
   componentDidMount() {
     const {setActiveSeason, seasons} = this.props;
-    setActiveSeason(seasons[0])
+    setActiveSeason(seasons[1])
   }
 
   renderMain() {
@@ -48,6 +49,12 @@ class App extends PureComponent {
     )
   }
 
+  renderShop() {
+    return (
+      <Shop />
+    ) 
+  }
+
   render() {
     return (
       <Router history={history}>
@@ -60,6 +67,9 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/tasks">
             {this.renderTasks()}
+          </Route>
+          <Route exact path="/shop">
+            {this.renderShop()}
           </Route>
         </Switch>
       </Router>

@@ -1,5 +1,5 @@
 import {extend} from "../../utils/common.js";
-import {collectibles, seasons, packs} from "../../utils/const.js"
+import {collectibles, packs} from "../../utils/const.js"
 
 const initialState = {
   cards: collectibles,
@@ -127,7 +127,7 @@ export const reducer = (state = initialState, action) => {
         packs: state. packs.map((pack) => {
           if (pack.id === action.payload.id) {
             return Object.assign({}, pack, {
-              amount: amount + 1
+              amount: pack.amount - 1,
             })
           }
         })

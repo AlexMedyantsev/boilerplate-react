@@ -23,6 +23,7 @@ var ActionType = {
   SET_ACTIVE_MONTH_NUMBER: "SET_ACTIVE_MONTH_NUMBER",
   SET_ACTIVE_YEAR: "SET_ACTIVE_YEAR",
   SET_ACTIVE_SEASON: "SET_ACTIVE_SEASON",
+  RESET_ACTIVE_SEASON: "RESET_ACTIVE_SEASON",
   SET_ACTIVE_SEASON_TAB: "SET_ACTIVE_SEASON_TAB"
 };
 exports.ActionType = ActionType;
@@ -42,6 +43,11 @@ var ActionCreator = {
     return {
       type: ActionType.SET_ACTIVE_SEASON,
       payload: month
+    };
+  },
+  resetActiveSeason: function resetActiveSeason() {
+    return {
+      type: ActionType.RESET_ACTIVE_SEASON
     };
   },
   setActiveYear: function setActiveYear(month) {
@@ -81,7 +87,7 @@ var reducer = function reducer() {
 
     case ActionType.SET_ACTIVE_SEASON_TAB:
       return Object.assign({}, state, {
-        activeYear: action.payload
+        activeSeasonTab: action.payload
       });
 
     case ActionType.SET_ACTIVE_SEASON:
@@ -90,6 +96,19 @@ var reducer = function reducer() {
           if (season.id === action.payload.id) {
             return Object.assign({}, season, {
               isActive: true
+            });
+          }
+
+          return season;
+        })
+      });
+
+    case ActionType.RESET_ACTIVE_SEASON:
+      return Object.assign({}, state, {
+        seasons: state.seasons.map(function (season) {
+          if (season.isActive) {
+            return Object.assign({}, season, {
+              isActive: false
             });
           }
 

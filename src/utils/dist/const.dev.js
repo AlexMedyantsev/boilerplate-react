@@ -168,15 +168,15 @@ var tasks = [{
 }];
 exports.tasks = tasks;
 var packs = [{
-  name: "",
+  name: "October 2020 cards pack",
   monthNumber: 9,
   year: 2020,
   image: "../img/card-back-playing-koi.png",
   amount: 100
 }, {
   name: "gold",
-  monthNumber: null,
-  year: null,
+  monthNumber: (0, _moment["default"])().month(),
+  year: (0, _moment["default"])().year(),
   image: "../img/card-back-golden.png",
   amount: 2
 }];
